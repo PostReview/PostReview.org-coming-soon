@@ -1,267 +1,112 @@
-import { Suspense } from "react"
-import { Image, Link, BlitzPage, useMutation, Routes } from "blitz"
+import { useEffect, useState } from "react"
+import { Image, BlitzPage } from "blitz"
 import Layout from "app/core/layouts/Layout"
-import { useCurrentUser } from "app/core/hooks/useCurrentUser"
-import logout from "app/auth/mutations/logout"
 import logo from "public/logo.png"
-
-/*
- * This file is just for a pleasant getting started page for your new app.
- * You can delete everything in here and start from scratch if you like.
- */
-
-const UserInfo = () => {
-  const currentUser = useCurrentUser()
-  const [logoutMutation] = useMutation(logout)
-
-  if (currentUser) {
-    return (
-      <>
-        <button
-          className="button small"
-          onClick={async () => {
-            await logoutMutation()
-          }}
-        >
-          Logout
-        </button>
-        <div>
-          User id: <code>{currentUser.id}</code>
-          <br />
-          User role: <code>{currentUser.role}</code>
-        </div>
-      </>
-    )
-  } else {
-    return (
-      <>
-        <Link href={Routes.SignupPage()}>
-          <a className="button small">
-            <strong>Sign Up</strong>
-          </a>
-        </Link>
-        <Link href={Routes.LoginPage()}>
-          <a className="button small">
-            <strong>Login</strong>
-          </a>
-        </Link>
-      </>
-    )
-  }
-}
+import { BsArrowRightCircle, BsTwitter, BsFillEnvelopeFill, BsDiscord } from "react-icons/bs"
 
 const Home: BlitzPage = () => {
+  const targetDate = new Date("2022-09-01 EST")
+  const countDownDate = new Date(targetDate).getTime()
+
+  const [countDown, setcountDown] = useState(countDownDate - new Date().getTime())
+  // Update the date
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setcountDown(countDownDate - new Date().getTime())
+    }, 1000) // Refresh after every 1 sec
+
+    return () => clearInterval(interval)
+  }, [countDownDate])
+
+  const getCurrentDateValues = (countDown) => {
+    const days = Math.floor(countDown / (1000 * 60 * 60 * 24))
+    const hours = Math.floor((countDown % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
+    const minutes = Math.floor((countDown % (1000 * 60 * 60)) / (1000 * 60))
+    const seconds = Math.floor((countDown % (1000 * 60)) / 1000)
+
+    return { days, hours, minutes, seconds }
+  }
+
+  const currentDateValues = getCurrentDateValues(countDown)
+
   return (
-    <div className="container">
-      <main>
-        <div className="logo">
-          <Image src={logo} alt="blitzjs" />
-        </div>
-        <p>
-          <strong>Congrats!</strong> Your app is ready, including user sign-up and log-in.
-        </p>
-        <div className="buttons" style={{ marginTop: "1rem", marginBottom: "1rem" }}>
-          <Suspense fallback="Loading...">
-            <UserInfo />
-          </Suspense>
-        </div>
-        <p>
-          <strong>
-            To add a new model to your app, <br />
-            run the following in your terminal:
-          </strong>
-        </p>
-        <pre>
-          <code>blitz generate all project name:string</code>
-        </pre>
-        <div style={{ marginBottom: "1rem" }}>(And select Yes to run prisma migrate)</div>
-        <div>
-          <p>
-            Then <strong>restart the server</strong>
-          </p>
-          <pre>
-            <code>Ctrl + c</code>
-          </pre>
-          <pre>
-            <code>blitz dev</code>
-          </pre>
-          <p>
-            and go to{" "}
-            <Link href="/projects">
-              <a>/projects</a>
-            </Link>
-          </p>
-        </div>
-        <div className="buttons" style={{ marginTop: "5rem" }}>
-          <a
-            className="button"
-            href="https://blitzjs.com/docs/getting-started?utm_source=blitz-new&utm_medium=app-template&utm_campaign=blitz-new"
-            target="_blank"
-            rel="noopener noreferrer"
+    <div className="h-screen flex flex-col items-center  text-slate-800">
+      <main className="flex-grow flex flex-col items-center justify-center mx-4">
+        <div className="flex flex-row items-center my-8">
+          <div
+            id="tagline"
+            className="text-3xl font-bold max-w-sm text-transparent bg-gradient-to-r from-orange-600 to-blue-600 bg-clip-text"
           >
-            Documentation
+            Start your new academic year differently with PostReview
+          </div>
+          <div id="logo">
+            <Image src={logo} alt="PostReview.org" />
+          </div>
+        </div>
+        <div id="benefits" className="flex flex-col gap-4 w-full">
+          <div>
+            <h1 className="text-xl font-bold">Save time </h1>
+            <div>Find highly-rated articles quickly</div>
+          </div>
+          <div>
+            <h1 className="text-xl font-bold">Share your opinions </h1>
+            <div>Rate the articles you liked or disliked</div>
+          </div>
+          <div>
+            <h1 className="text-xl font-bold">Stay connected </h1>
+            <div>Stay up-to-date with what your colleagues are reading</div>
+          </div>
+        </div>
+        <div
+          id="signup"
+          className="my-8 p-4 rounded-lg bg-gradient-to-tr from-orange-600 to-blue-600 text-white"
+        >
+          <div>Subscribe to receive updates:</div>
+          <div className="my-4">
+            <input
+              className="border-b-2 mx-3 focus:outline-none py-1 px-5"
+              type="text"
+              placeholder="Email"
+            />
+            <button className="bg-blue-400 text-white px-5 py-1 rounded-md">
+              Subscribe <BsArrowRightCircle className="inline self-center" />
+            </button>
+          </div>
+          <div id="beta-test-container" className="flex flex-row items-center gap-2 mx-3">
+            <input type="checkbox" id="beta-tester" />
+            <label htmlFor="beta-tester">I&apos;m also interested in becoming a beta tester</label>
+          </div>
+        </div>
+        <div id="countdown" className="my-8">
+          <h1 className="text-xl font-bold">Launching on September 1st, 2022</h1>
+          <div id="timer" className="flex flex-row gap-4 mt-4">
+            <div>
+              <span className="text-7xl">{currentDateValues.days}</span> days
+            </div>
+            <div>
+              <span className="text-7xl">{currentDateValues.hours}</span> hours
+            </div>
+            <div>
+              <span className="text-7xl">{currentDateValues.minutes}</span> minutes
+            </div>
+            <div>
+              <span className="text-7xl w-full">{currentDateValues.seconds}</span> seconds
+            </div>
+          </div>
+        </div>
+        <div id="social-icons" className="flex flex-row text-3xl gap-8 my-12 mb-48">
+          <a href="https://twitter.com/PostReviewOrg" target={"_blank"} rel="noreferrer">
+            <BsTwitter />
           </a>
-          <a
-            className="button-outline"
-            href="https://github.com/blitz-js/blitz"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Github Repo
+          <a href="mailto:hello@postreview.org">
+            <BsFillEnvelopeFill />
           </a>
-          <a
-            className="button-outline"
-            href="https://discord.blitzjs.com"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Discord Community
+          <a href="https://discord.gg/HSGk2j2pZM" target={"_blank"} rel="noreferrer">
+            <BsDiscord />
           </a>
         </div>
       </main>
-
-      <footer>
-        <a
-          href="https://blitzjs.com?utm_source=blitz-new&utm_medium=app-template&utm_campaign=blitz-new"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by Blitz.js
-        </a>
-      </footer>
-
-      <style jsx global>{`
-        @import url("https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;700&display=swap");
-
-        html,
-        body {
-          padding: 0;
-          margin: 0;
-          font-family: "Libre Franklin", -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-            Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-        }
-
-        * {
-          -webkit-font-smoothing: antialiased;
-          -moz-osx-font-smoothing: grayscale;
-          box-sizing: border-box;
-        }
-        .container {
-          min-height: 100vh;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-        }
-
-        main {
-          padding: 5rem 0;
-          flex: 1;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-        }
-
-        main p {
-          font-size: 1.2rem;
-        }
-
-        p {
-          text-align: center;
-        }
-
-        footer {
-          width: 100%;
-          height: 60px;
-          border-top: 1px solid #eaeaea;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          background-color: #45009d;
-        }
-
-        footer a {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-
-        footer a {
-          color: #f4f4f4;
-          text-decoration: none;
-        }
-
-        .logo {
-          margin-bottom: 2rem;
-        }
-
-        .logo img {
-          width: 300px;
-        }
-
-        .buttons {
-          display: grid;
-          grid-auto-flow: column;
-          grid-gap: 0.5rem;
-        }
-        .button {
-          font-size: 1rem;
-          background-color: #6700eb;
-          padding: 1rem 2rem;
-          color: #f4f4f4;
-          text-align: center;
-        }
-
-        .button.small {
-          padding: 0.5rem 1rem;
-        }
-
-        .button:hover {
-          background-color: #45009d;
-        }
-
-        .button-outline {
-          border: 2px solid #6700eb;
-          padding: 1rem 2rem;
-          color: #6700eb;
-          text-align: center;
-        }
-
-        .button-outline:hover {
-          border-color: #45009d;
-          color: #45009d;
-        }
-
-        pre {
-          background: #fafafa;
-          border-radius: 5px;
-          padding: 0.75rem;
-          text-align: center;
-        }
-        code {
-          font-size: 0.9rem;
-          font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
-            Bitstream Vera Sans Mono, Courier New, monospace;
-        }
-
-        .grid {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          flex-wrap: wrap;
-
-          max-width: 800px;
-          margin-top: 3rem;
-        }
-
-        @media (max-width: 600px) {
-          .grid {
-            width: 100%;
-            flex-direction: column;
-          }
-        }
-      `}</style>
+      <footer></footer>
     </div>
   )
 }
