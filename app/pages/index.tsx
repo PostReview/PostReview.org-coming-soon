@@ -32,7 +32,7 @@ const Home: BlitzPage = () => {
   return (
     <div className="h-screen flex flex-col items-center  text-slate-800">
       <main className="flex-grow flex flex-col items-center justify-center mx-4">
-        <div className="flex flex-row items-center">
+        <div className="flex flex-row items-center my-8">
           <div
             id="tagline"
             className="text-3xl font-bold max-w-sm text-transparent bg-gradient-to-r from-orange-600 to-blue-600 bg-clip-text"
@@ -43,7 +43,7 @@ const Home: BlitzPage = () => {
             <Image src={logo} alt="PostReview.org" />
           </div>
         </div>
-        <div id="benefits" className="flex flex-col gap-4 w-full my-8">
+        <div id="benefits" className="flex flex-col gap-4 w-full">
           <div>
             <h1 className="text-xl font-bold">Save time </h1>
             <div>Find highly-rated articles quickly</div>
