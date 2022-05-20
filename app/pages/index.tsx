@@ -57,8 +57,11 @@ const Home: BlitzPage = () => {
             <div>Stay up-to-date with what your colleagues are reading</div>
           </div>
         </div>
-        <div id="signup" className="my-8 p-4 rounded-lg">
-          <div>Interested? Subscribe to receive updates.</div>
+        <div
+          id="signup"
+          className="my-8 p-4 rounded-lg bg-gradient-to-tr from-orange-600 to-blue-600 text-white"
+        >
+          <div>Subscribe to receive updates:</div>
           <div className="my-4">
             <input
               className="border-b-2 mx-3 focus:outline-none py-1 px-5"
@@ -69,9 +72,9 @@ const Home: BlitzPage = () => {
               Subscribe <BsArrowRightCircle className="inline self-center" />
             </button>
           </div>
-          <div id="beta-test-container" className="flex flex-row items-center gap-2">
+          <div id="beta-test-container" className="flex flex-row items-center gap-2 mx-3">
             <input type="checkbox" id="beta-tester" />
-            <label htmlFor="beta-tester">Sign up for the beta testing</label>
+            <label htmlFor="beta-tester">I&apos;m also interested in becoming a beta tester</label>
           </div>
         </div>
         <div id="countdown" className="my-8">
