@@ -6,7 +6,7 @@ import { BsTwitter, BsFillEnvelopeFill, BsDiscord } from "react-icons/bs"
 import { SubscribeForm } from "app/core/components/SubscribeForm"
 
 const Home: BlitzPage = () => {
-  const targetDate = new Date("2022-09-01 EST")
+  const targetDate = new Date("2022-09-01")
   const countDownDate = new Date(targetDate).getTime()
 
   const [countDown, setcountDown] = useState(countDownDate - new Date().getTime())
