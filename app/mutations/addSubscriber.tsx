@@ -22,7 +22,7 @@ export default async function addSubscriber(input: z.infer<typeof subscriberInfo
     TemplateModel: {
       product_url: process.env.PUBLIC_URL,
       product_name: "PostReview",
-      support_url: "hello@postreview.org",
+      support_email: "hello@postreview.org",
       company_name: "PostReview",
       unsubscribe_url: `${origin}/unsubscribe?=${subscriber.email}`,
     },
