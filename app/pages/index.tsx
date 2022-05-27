@@ -33,7 +33,7 @@ const Home: BlitzPage = () => {
   return (
     <div className="h-screen flex flex-col items-center  text-slate-800">
       <main className="flex-grow flex flex-col items-center justify-center mx-4">
-        <div className="flex flex-row items-center my-8">
+        <div className="flex md:flex-row flex-col items-center my-8">
           <div
             id="tagline"
             className="text-3xl font-bold max-w-sm text-transparent bg-gradient-to-r from-orange-600 to-blue-600 bg-clip-text"
@@ -68,16 +68,19 @@ const Home: BlitzPage = () => {
           <h1 className="text-xl font-bold">Launching on September 1st, 2022</h1>
           <div id="timer" className="flex flex-row gap-4 mt-4">
             <div>
-              <span className="text-7xl">{currentDateValues.days}</span> days
+              <span className="font-bold md:text-7xl text-2xl">{currentDateValues.days}</span> days
             </div>
             <div>
-              <span className="text-7xl">{currentDateValues.hours}</span> hours
+              <span className="font-bold md:text-7xl text-2xl">{currentDateValues.hours}</span>{" "}
+              hours
             </div>
             <div>
-              <span className="text-7xl">{currentDateValues.minutes}</span> minutes
+              <span className="font-bold md:text-7xl text-2xl">{currentDateValues.minutes}</span>{" "}
+              minutes
             </div>
             <div>
-              <span className="text-7xl w-full">{currentDateValues.seconds}</span> seconds
+              <span className="font-bold md:text-7xl text-2xl">{currentDateValues.seconds}</span>{" "}
+              seconds
             </div>
           </div>
         </div>
