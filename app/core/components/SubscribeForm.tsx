@@ -46,9 +46,9 @@ export const SubscribeForm = () => {
               isSubmitting,
             }) => (
               <form onSubmit={handleSubmit} className="flex flex-col">
-                <div className="my-4">
+                <div className="my-4 flex sm:flex-row flex-col gap-2">
                   <input
-                    className="border-b-2 mx-3 focus:outline-none py-1 px-5 text-zinc-800"
+                    className="border-b-2 focus:outline-none py-1 px-5 text-zinc-800 rounded-md"
                     type="email"
                     name="email"
                     placeholder="Email"
