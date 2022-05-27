@@ -2,7 +2,8 @@ import { useEffect, useState } from "react"
 import { Image, BlitzPage } from "blitz"
 import Layout from "app/core/layouts/Layout"
 import logo from "public/logo.png"
-import { BsArrowRightCircle, BsTwitter, BsFillEnvelopeFill, BsDiscord } from "react-icons/bs"
+import { BsTwitter, BsFillEnvelopeFill, BsDiscord } from "react-icons/bs"
+import { SubscribeForm } from "app/core/components/SubscribeForm"
 
 const Home: BlitzPage = () => {
   const targetDate = new Date("2022-09-01 EST")
@@ -61,21 +62,7 @@ const Home: BlitzPage = () => {
           id="signup"
           className="my-8 p-4 rounded-lg bg-gradient-to-tr from-orange-600 to-blue-600 text-white"
         >
-          <div>Subscribe to receive updates:</div>
-          <div className="my-4">
-            <input
-              className="border-b-2 mx-3 focus:outline-none py-1 px-5"
-              type="text"
-              placeholder="Email"
-            />
-            <button className="bg-blue-400 text-white px-5 py-1 rounded-md">
-              Subscribe <BsArrowRightCircle className="inline self-center" />
-            </button>
-          </div>
-          <div id="beta-test-container" className="flex flex-row items-center gap-2 mx-3">
-            <input type="checkbox" id="beta-tester" />
-            <label htmlFor="beta-tester">I&apos;m also interested in becoming a beta tester</label>
-          </div>
+          <SubscribeForm />
         </div>
         <div id="countdown" className="my-8">
           <h1 className="text-xl font-bold">Launching on September 1st, 2022</h1>
