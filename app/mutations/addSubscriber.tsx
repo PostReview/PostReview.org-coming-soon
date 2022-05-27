@@ -24,7 +24,7 @@ export default async function addSubscriber(input: z.infer<typeof subscriberInfo
       product_name: "PostReview",
       support_email: "hello@postreview.org",
       company_name: "PostReview",
-      unsubscribe_url: `${origin}/unsubscribe?=${subscriber.email}`,
+      unsubscribe_url: `${origin}/unsubscribe?email=${subscriber.email}`,
     },
   }
 
