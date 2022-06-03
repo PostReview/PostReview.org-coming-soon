@@ -47,7 +47,7 @@ const Home: BlitzPage = () => {
         <div id="benefits" className="flex flex-col gap-4 w-full">
           <div>
             <h1 className="text-xl font-bold">Save time </h1>
-            <div>Find highly-rated articles quickly</div>
+            <div>Find highly-rated scholarly articles quickly</div>
           </div>
           <div>
             <h1 className="text-xl font-bold">Share your opinions </h1>
