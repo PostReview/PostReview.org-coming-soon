@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react"
-import { Image, BlitzPage } from "blitz"
+import { Image, BlitzPage, Head } from "blitz"
 import Layout from "app/core/layouts/Layout"
 import logo from "public/logo.png"
 import { BsTwitter, BsFillEnvelopeFill, BsDiscord } from "react-icons/bs"
 import { SubscribeForm } from "app/core/components/SubscribeForm"
+import { SocialMetadata } from "app/core/components/SocialMetadata"
 
 const Home: BlitzPage = () => {
   const targetDate = new Date("2022-09-01")
@@ -32,6 +33,9 @@ const Home: BlitzPage = () => {
 
   return (
     <div className="h-screen flex flex-col items-center  text-slate-800">
+      <Head>
+        <SocialMetadata />
+      </Head>
       <main className="flex-grow flex flex-col items-center justify-center mx-4">
         <div className="flex md:flex-row flex-col items-center my-8">
           <div
@@ -102,6 +106,6 @@ const Home: BlitzPage = () => {
 }
 
 Home.suppressFirstRenderFlicker = true
-Home.getLayout = (page) => <Layout title="Home">{page}</Layout>
+Home.getLayout = (page) => <Layout title="PostReview">{page}</Layout>
 
 export default Home
