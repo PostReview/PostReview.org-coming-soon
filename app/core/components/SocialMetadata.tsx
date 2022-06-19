@@ -4,7 +4,7 @@ export const SocialMetadata = () => {
   const title = "PostReview"
   const description = "Start your new academic year differently with PostReview"
   const rootUrl = new URL("https://www.postreview.org/")
-  const socialImage = "./social-image.jpg"
+  const socialImage = "/social-image.jpg"
   return (
     <>
       <meta name="description" content={title} />
