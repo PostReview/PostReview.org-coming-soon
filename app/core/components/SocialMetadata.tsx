@@ -4,7 +4,7 @@ export const SocialMetadata = () => {
   const title = "PostReview"
   const description = "Start your new academic year differently with PostReview"
   const rootUrl = new URL("https://www.postreview.org/")
-  const socialImage = "/social-image.jpg"
+  const socialImage = new URL("/social-image.jpg", rootUrl)
   return (
     <>
       <meta name="description" content={title} />
@@ -15,11 +15,11 @@ export const SocialMetadata = () => {
       <meta property="twitter:url" content={rootUrl.href} />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
-      <meta name="twitter:image" content={socialImage} />
+      <meta name="twitter:image" content={socialImage.href} />
       {/* Open Graph */}
       <meta property="og:type" content="website" />
       <meta property="og:url" content={rootUrl.href} key="ogurl" />
-      <meta property="og:image" content={socialImage} key="ogimage" />
+      <meta property="og:image" content={socialImage.href} key="ogimage" />
       <meta property="og:site_name" content={title} key="ogsitename" />
       <meta property="og:title" content={title} key="ogtitle" />
       <meta property="og:description" content={description} key="ogdesc" />
