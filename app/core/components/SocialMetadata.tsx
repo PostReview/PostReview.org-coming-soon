@@ -15,6 +15,8 @@ export const SocialMetadata = () => {
       <meta property="og:site_name" content={title} key="ogsitename" />
       <meta property="og:title" content={title} key="ogtitle" />
       <meta property="og:description" content={description} key="ogdesc" />
+      {/* Twittter */}
+      <meta name="twitter:card" content="summary_large_image" />
     </>
   )
 }
