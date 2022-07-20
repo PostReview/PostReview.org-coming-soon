@@ -8,14 +8,6 @@ export const SocialMetadata = () => {
   return (
     <>
       <meta name="description" content={title} />
-
-      {/* Twitter */}
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta property="twitter:domain" content="postreview.org" />
-      <meta property="twitter:url" content={rootUrl.href} />
-      <meta name="twitter:title" content={title} />
-      <meta name="twitter:description" content={description} />
-      <meta name="twitter:image" content={socialImage.href} />
       {/* Open Graph */}
       <meta property="og:type" content="website" />
       <meta property="og:url" content={rootUrl.href} key="ogurl" />
