@@ -32,20 +32,18 @@ const Home: BlitzPage = () => {
   const currentDateValues = getCurrentDateValues(countDown)
 
   return (
-    <div className="h-screen flex flex-col items-center  text-slate-800">
+    <div className="flex flex-col items-center text-white bg-zinc-800">
       <Head>
         <SocialMetadata />
       </Head>
       <main className="flex-grow flex flex-col items-center justify-center mx-4">
         <div className="flex md:flex-row flex-col items-center my-8">
-          <div
-            id="tagline"
-            className="text-3xl font-bold max-w-sm text-transparent bg-gradient-to-r from-orange-600 to-blue-600 bg-clip-text"
-          >
-            Start your new academic year differently with PostReview
+          <div id="tagline" className="text-4xl font-bold max-w-sm">
+            Start your new academic year <span className="text-[#94EC01]">differently</span> with
+            PostReview
           </div>
           <div id="logo">
-            <Image src={logo} alt="PostReview.org" />
+            <Image src={logo} width={350} height={350} alt="PostReview.org" />
           </div>
         </div>
         <div id="benefits" className="flex flex-col gap-4 w-full">
@@ -64,11 +62,11 @@ const Home: BlitzPage = () => {
         </div>
         <div
           id="signup"
-          className="my-8 p-4 rounded-lg bg-gradient-to-tr from-orange-600 to-blue-600 text-white"
+          className="mb-8 mt-16 p-4 bg-gradient-to-b from-zinc-400 to-zinc-800 text-white"
         >
           <SubscribeForm />
         </div>
-        <div id="countdown" className="my-8">
+        <div id="countdown" className="my-8 font-mono">
           <h1 className="text-xl font-bold">Launching on September 1st, 2022</h1>
           <div id="timer" className="flex flex-row gap-4 mt-4">
             <div>
