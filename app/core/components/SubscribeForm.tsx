@@ -48,7 +48,7 @@ export const SubscribeForm = () => {
               <form onSubmit={handleSubmit} className="flex flex-col">
                 <div className="my-4 flex sm:flex-row flex-col gap-2">
                   <input
-                    className="border-b-2 focus:outline-none py-1 px-5 text-zinc-800 rounded-md"
+                    className="border-b-2 focus:outline-none py-1 px-5 bg-black text-white border-none"
                     type="email"
                     name="email"
                     placeholder="Email"
@@ -56,7 +56,7 @@ export const SubscribeForm = () => {
                     onBlur={handleBlur}
                     value={values.email}
                   />
-                  <button className="bg-blue-400 text-white px-5 py-1 rounded-md">
+                  <button className="bg-[#94EC01] hover:bg-[#619801] active:bg-[#94EC01] text-[#545454] px-5 py-1">
                     Subscribe <BsArrowRightCircle className="inline self-center" />
                   </button>
                 </div>
